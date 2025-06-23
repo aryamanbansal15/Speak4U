@@ -1,0 +1,139 @@
+{
+  "categories": [
+    {
+      "name": "Basic Needs",
+      "icon": "basic need.jpg",
+      "phrases": [
+        "I am hungry",
+        "I want water",
+        "I need to use the toilet",
+        "I am tired",
+        "I feel hot",
+        "I feel cold",
+        "I need rest",
+        "I want to lie down",
+        "I feel pain"
+      ]
+    },
+    {
+      "name": "Feelings & Emotions",
+      "icon": "feelings.jpg",
+      "phrases": [
+        "I am happy",
+        "I am sad",
+        "I am angry",
+        "I am scared",
+        "I am bored",
+        "I feel sick",
+        "I am okay",
+        "I love this",
+        "I don’t like this"
+      ]
+    },
+    {
+      "name": "Greetings & Social",
+      "icon": "greeting.jpg",
+      "phrases": [
+        "Hello",
+        "Good morning",
+        "Good night",
+        "Thank you",
+        "Please",
+        "Sorry",
+        "Bye",
+        "How are you?",
+        "Nice to meet you"
+      ]
+    },
+    {
+      "name": "Questions",
+      "icon": "questions.jpg",
+      "phrases": [
+        "Where are we going?",
+        "What is this?",
+        "Who is that?",
+        "Can you help me?",
+        "When will we go?",
+        "Why did that happen?",
+        "Can I do it?",
+        "Are you okay?",
+        "What are you doing?"
+      ]
+    },
+    {
+      "name": "Choices & Preferences",
+      "icon": "choices.jpg",
+      "phrases": [
+        "I want this",
+        "I don’t want this",
+        "I like it",
+        "I don’t like it",
+        "Yes",
+        "No",
+        "Maybe",
+        "I want more",
+        "I want something else"
+      ]
+    },
+    {
+      "name": "People",
+      "icon": "people.jpg",
+      "phrases": [
+        "Mom",
+        "Dad",
+        "Teacher",
+        "Friend",
+        "Brother",
+        "Sister",
+        "Doctor",
+        "You",
+        "Me"
+      ]
+    },
+    {
+      "name": "Places",
+      "icon": "places.jpg",
+      "phrases": [
+        "Home",
+        "School",
+        "Bathroom",
+        "Kitchen",
+        "Outside",
+        "Inside",
+        "Hospital",
+        "Playground",
+        "Room"
+      ]
+    },
+    {
+      "name": "Activities",
+      "icon": "activities.jpg",
+      "phrases": [
+        "I want to play",
+        "Let’s go outside",
+        "I am reading",
+        "I am watching TV",
+        "I am done",
+        "I want to sleep",
+        "Let’s eat",
+        "Let’s go for a walk",
+        "I am working"
+      ]
+    },
+    {
+      "name": "Emergency",
+      "icon": "emergency.jpg",
+      "phrases": [
+        "Help me!",
+        "I am hurt",
+        "I can’t breathe",
+        "Call the doctor",
+        "I feel dizzy",
+        "I feel very sick",
+        "It’s an emergency",
+        "I need medicine",
+        "I need help now"
+      ]
+    }
+  ]
+}
