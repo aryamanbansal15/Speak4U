@@ -2,7 +2,7 @@
   "categories": [
     {
       "name": "Basic Needs",
-      "icon": "basic need.jpg",
+      "icon": "assets/images/basic_need.jpg",
       "phrases": [
         "I am hungry",
         "I want water",
@@ -17,7 +17,7 @@
     },
     {
       "name": "Feelings & Emotions",
-      "icon": "feelings.jpg",
+      "icon": "assets/images/feelings.jpg",
       "phrases": [
         "I am happy",
         "I am sad",
@@ -32,7 +32,7 @@
     },
     {
       "name": "Greetings & Social",
-      "icon": "greeting.jpg",
+      "icon": "assets/images/greeting.jpg",
       "phrases": [
         "Hello",
         "Good morning",
@@ -47,7 +47,7 @@
     },
     {
       "name": "Questions",
-      "icon": "questions.jpg",
+      "icon": "assets/images/questions.jpg",
       "phrases": [
         "Where are we going?",
         "What is this?",
@@ -62,7 +62,7 @@
     },
     {
       "name": "Choices & Preferences",
-      "icon": "choices.jpg",
+      "icon": "assets/images/choices.jpg",
       "phrases": [
         "I want this",
         "I don’t want this",
@@ -77,7 +77,7 @@
     },
     {
       "name": "People",
-      "icon": "people.jpg",
+      "icon": "assets/images/people.jpg",
       "phrases": [
         "Mom",
         "Dad",
@@ -92,7 +92,7 @@
     },
     {
       "name": "Places",
-      "icon": "places.jpg",
+      "icon": "assets/images/places.jpg",
       "phrases": [
         "Home",
         "School",
@@ -107,7 +107,7 @@
     },
     {
       "name": "Activities",
-      "icon": "activities.jpg",
+      "icon": "assets/images/activities.jpg",
       "phrases": [
         "I want to play",
         "Let’s go outside",
@@ -122,7 +122,7 @@
     },
     {
       "name": "Emergency",
-      "icon": "emergency.jpg",
+      "icon": "assets/images/emergency.jpg",
       "phrases": [
         "Help me!",
         "I am hurt",

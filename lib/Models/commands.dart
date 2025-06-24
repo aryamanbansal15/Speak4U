@@ -1,6 +1,8 @@
 class CommandModel
 {
   static List<Command>commands = [];
+  Command getByPos(int pos) => commands[pos];
+
 }
 
 class Command
