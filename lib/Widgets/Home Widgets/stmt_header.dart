@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:speak4u/utils/invert.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class CommandHeader extends StatelessWidget {
-  const CommandHeader({super.key});
+class StmtHeader extends StatelessWidget {
+  const StmtHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,7 @@ class CommandHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        "YOU THINK, WE SPEAK".text.bold.xl2.color(textColor).make(),
-        SizedBox.fromSize(size: Size(20, 30)),
-        "Commonly Used Commands".text.xl5.center.color(textColor).fontFamily(GoogleFonts.birthstone().fontFamily!).make(),
+        "Commonly Used Phrases".text.xl5.center.fontFamily(GoogleFonts.birthstone().fontFamily!).color(textColor).make(),
       ],
     );
   }

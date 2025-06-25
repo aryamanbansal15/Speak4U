@@ -1,21 +1,26 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:speak4u/Models/commands.dart';
 import 'package:speak4u/Widgets/Home%20Widgets/command_header.dart';
 import 'package:speak4u/Widgets/Home%20Widgets/command_list.dart';
+import 'package:speak4u/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../utils/invert.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePage> createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   final url = "https://raw.githubusercontent.com/aryamanbansal15/Commands-JSON-API/main/commands.json";
+  
   @override
 
   void initState() {
@@ -23,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     loadData();
   }
 
+  
   loadData() async {
     await Future.delayed(const Duration(seconds: 3));
     final response =
@@ -39,12 +45,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget build(BuildContext context) {
+    final textColor = invertColor(Theme.of(context).cardColor);
     return Scaffold(
       appBar: AppBar(
-        title: Text("SPEAK4U", style: TextStyle(
+        backgroundColor: context.cardColor,
+        title: Text("SPEAK4U", style: GoogleFonts.oswald(
+          textStyle: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 40,
-        ),),
+            color: textColor,
+        ),)),
       ),
       body: SafeArea(
         child: Container(
@@ -57,6 +67,14 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: const CommandList().py16(),
                 )
+              else
+                Center(child: CircularProgressIndicator()),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, MyRoutes.customRoute);
+                },
+                child: "CUSTOM COMMANDS".text.xl2.color(textColor).make(),
+              ).w(300).h(60).centered(),
             ],
           )
         )
