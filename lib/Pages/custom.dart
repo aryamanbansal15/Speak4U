@@ -80,8 +80,7 @@ class _CustomPageState extends State<CustomPage> {
                     SizedBox.fromSize(size: Size(200, 20),),
                     ElevatedButton(
                       onPressed: () {
-                        // Speak.speak(command, widget.langCodeSp);
-                        Speak.speak(command, "en-US", widget.rate, widget.pitch, widget.vol);
+                        Speak.speak(command, widget.langCodeSp, widget.rate, widget.pitch, widget.vol);
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
