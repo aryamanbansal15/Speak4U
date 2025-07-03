@@ -3,8 +3,32 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:speak4u/utils/invert.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class StmtHeader extends StatelessWidget {
-  const StmtHeader({super.key});
+import '../../utils/translate.dart';
+
+class StmtHeader extends StatefulWidget {
+  final String langCode;
+  const StmtHeader({super.key, required this.langCode});
+
+  @override
+  State<StmtHeader> createState() => _StmtHeaderState();
+}
+
+class _StmtHeaderState extends State<StmtHeader> {
+
+  String commonPhrases = "Commonly Used Phrases";
+
+  @override
+  void initState() {
+    super.initState();
+    translate(commonPhrases, widget.langCode);
+  }
+
+  void translate(String text, String langCode) async {
+    String result = await Translate().translate(text, langCode);
+    setState(() {
+      commonPhrases = result; // ✅ Corrected
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +36,9 @@ class StmtHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        "Commonly Used Phrases".text.xl5.center.fontFamily(GoogleFonts.birthstone().fontFamily!).color(textColor).make(),
+        commonPhrases.text.xl5.center
+            .fontFamily(GoogleFonts.birthstone().fontFamily!)
+            .color(textColor).make(),
       ],
     );
   }

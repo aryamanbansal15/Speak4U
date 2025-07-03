@@ -1,0 +1,4 @@
+1) Personalization :
+    d) Reset Changes :
+        - resets the changes made in personalization page
+        - reverts to default theme and language
