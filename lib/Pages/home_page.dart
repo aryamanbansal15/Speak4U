@@ -1,15 +1,19 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:speak4u/Models/commands.dart';
+import 'package:speak4u/Models/messages.dart';
 import 'package:speak4u/Widgets/Home%20Widgets/command_header.dart';
 import 'package:speak4u/Widgets/Home%20Widgets/command_list.dart';
 import 'package:speak4u/utils/routes.dart';
 import 'package:speak4u/utils/translate.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../providers/settings_provider.dart';
 import '../utils/invert.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,47 +22,58 @@ class HomePage extends StatefulWidget {
   final rate;
   final vol;
   final pitch;
+  final fileName;
 
-  const HomePage({super.key, required this.langCode, required this.langCodeSp, required this.rate, required this.vol, required this.pitch});
+  const HomePage({super.key, required this.langCode, required this.langCodeSp, required this.rate, required this.vol, required this.pitch, required this.fileName});
 
   @override
   State<HomePage> createState() => HomePageState();
 }
 
 class HomePageState extends State<HomePage> {
-  final url = "https://raw.githubusercontent.com/aryamanbansal15/Commands-JSON-API/refs/heads/main/commands.json";
-  String text = "CUSTOM COMMANDS";
+  // String text = "CUSTOM COMMANDS";
   @override
 
 
   void initState() {
     super.initState();
     loadData();
-    translate(text, widget.langCode);
+    // translate(text, widget.langCode);
   }
 
-  void translate(String text, String langCode) async {
-    String result = await Translate().translate(text, langCode);
-    setState(() {
-      text = result;
-    });
-  }
+  // void translate(String text, String langCode) async {
+  //   String result = await Translate().translate(text, langCode);
+  //   setState(() {
+  //     text = result;
+  //   });
+  // }
 
 
-  loadData() async {
+  void loadData() async {
     await Future.delayed(const Duration(seconds: 3));
-    final response =
-    await http.get(Uri.parse(url));
 
-    final catalogueJson = response.body;
+    try {
+      print("Loading file: ${widget.fileName}");
+      final speakJson = await rootBundle.loadString("${widget.fileName}");
+      final decodedData = jsonDecode(speakJson);
+      var productData = decodedData["commands"];
 
-    final decodedData = jsonDecode(catalogueJson);
-    var productData = decodedData["categories"];
-    CommandModel.commands = List.from(productData)
-        .map<Command>((item) => Command.fromMap(item))
-        .toList();
-    setState(() {});
+      print("Decoded command count: ${productData.length}");
+
+      CommandModel.commands = List.from(productData)
+          .map<Command>((item) => Command.fromMap(item))
+          .toList();
+
+      var messagesData = decodedData["messages"][0];
+      MessageModel.messages = [Message.fromMap(messagesData)];
+
+
+      setState(() {});
+    } catch (e) {
+      print("Error loading JSON: $e");
+    }
   }
+
 
   Widget build(BuildContext context) {
     final textColor = invertColor(Theme.of(context).cardColor);
@@ -78,13 +93,13 @@ class HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CommandHeader(langCode: widget.langCode),
+              CommandHeader(langCode: widget.langCode, messages: MessageModel.messages).py16(),
               if(CommandModel.commands.isNotEmpty)
                 Expanded(
                   child: CommandList(langCode: widget.langCode, langCodeSp: widget.langCodeSp, rate: widget.rate, pitch: widget.pitch, vol: widget.vol).py16(),
                 )
               else
-                Center(child: CircularProgressIndicator()),
+                Center(child: Text("${widget.fileName}", style: TextStyle(color: textColor, fontSize: 20))),
               // ElevatedButton(
               //   onPressed: () {
               //     Navigator.pushNamed(context, MyRoutes.customRoute);

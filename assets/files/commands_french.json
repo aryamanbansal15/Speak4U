@@ -1,0 +1,162 @@
+{
+  "commands": [
+    {
+      "name": "Besoins de base",
+      "icon": "assets/images/basic_need.jpg",
+      "phrases": [
+        "J'ai faim",
+        "Je veux de l'eau",
+        "Je dois aller aux toilettes",
+        "Je suis fatigué",
+        "J'ai chaud",
+        "J'ai froid",
+        "J'ai besoin de repos",
+        "Je veux m’allonger",
+        "J'ai mal"
+      ]
+    },
+    {
+      "name": "Sentiments et émotions",
+      "icon": "assets/images/feelings.jpg",
+      "phrases": [
+        "Je suis heureux",
+        "Je suis triste",
+        "Je suis en colère",
+        "J'ai peur",
+        "Je m'ennuie",
+        "Je me sens malade",
+        "Je vais bien",
+        "J'aime ça",
+        "Je n'aime pas ça"
+      ]
+    },
+    {
+      "name": "Salutations et social",
+      "icon": "assets/images/greeting.jpg",
+      "phrases": [
+        "Bonjour",
+        "Bon matin",
+        "Bonne nuit",
+        "Merci",
+        "S’il vous plaît",
+        "Désolé",
+        "Au revoir",
+        "Comment ça va ?",
+        "Enchanté"
+      ]
+    },
+    {
+      "name": "Questions",
+      "icon": "assets/images/questions.jpg",
+      "phrases": [
+        "Où allons-nous ?",
+        "Qu'est-ce que c'est ?",
+        "Qui est-ce ?",
+        "Pouvez-vous m'aider ?",
+        "Quand allons-nous partir ?",
+        "Pourquoi cela s’est-il passé ?",
+        "Puis-je le faire ?",
+        "Ça va ?",
+        "Que fais-tu ?"
+      ]
+    },
+    {
+      "name": "Choix et préférences",
+      "icon": "assets/images/choices.jpg",
+      "phrases": [
+        "Je veux ça",
+        "Je ne veux pas ça",
+        "J’aime ça",
+        "Je n’aime pas ça",
+        "Oui",
+        "Non",
+        "Peut-être",
+        "J'en veux plus",
+        "Je veux autre chose"
+      ]
+    },
+    {
+      "name": "Personnes",
+      "icon": "assets/images/people.jpg",
+      "phrases": [
+        "Maman",
+        "Papa",
+        "Professeur",
+        "Ami",
+        "Frère",
+        "Sœur",
+        "Docteur",
+        "Toi",
+        "Moi"
+      ]
+    },
+    {
+      "name": "Lieux",
+      "icon": "assets/images/places.jpg",
+      "phrases": [
+        "Maison",
+        "École",
+        "Salle de bain",
+        "Cuisine",
+        "Dehors",
+        "Dedans",
+        "Hôpital",
+        "Terrain de jeu",
+        "Chambre"
+      ]
+    },
+    {
+      "name": "Activités",
+      "icon": "assets/images/activities.jpg",
+      "phrases": [
+        "Je veux jouer",
+        "Allons dehors",
+        "Je lis",
+        "Je regarde la télé",
+        "J’ai terminé",
+        "Je veux dormir",
+        "Mangeons",
+        "Allons nous promener",
+        "Je travaille"
+      ]
+    },
+    {
+      "name": "Urgence",
+      "icon": "assets/images/emergency.jpg",
+      "phrases": [
+        "Aidez-moi !",
+        "Je suis blessé",
+        "Je ne peux pas respirer",
+        "Appelez le docteur",
+        "J’ai la tête qui tourne",
+        "Je me sens très malade",
+        "C'est une urgence",
+        "J’ai besoin de médicaments",
+        "J’ai besoin d’aide maintenant"
+      ]
+    }
+  ],
+
+  "messages": [
+    {
+      "tagline": "VOUS PENSEZ, NOUS PARLONS",
+      "common": "Commandes fréquemment utilisées",
+      "commonPhrases": "Phrases fréquemment utilisées",
+      "stop": "ARRÊTER \uD83D\uDED1",
+      "speak": "PARLER \uD83D\uDCAC",
+      "personalization": "Personnalisation",
+      "save": "Enregistrer",
+      "reset": "Réinitialiser",
+      "theme": "Choisir un thème",
+      "language": "Choisir une langue",
+      "pitch": "Choisir une hauteur",
+      "volume": "Choisir un volume",
+      "speed": "Choisir la vitesse de la parole",
+      "selected": "Sélectionné",
+      "command": "Commande",
+      "enterToSpeak": "Entrez ce que vous voulez dire",
+      "custom": "COMMANDES PERSONNALISÉES"
+    }
+  ]
+
+}

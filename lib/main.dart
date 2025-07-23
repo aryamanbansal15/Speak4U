@@ -1,52 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speak4u/Pages/home_page.dart';
 import 'package:speak4u/Pages/personalization.dart';
+import 'package:speak4u/Widgets/restart.dart';
+import 'package:speak4u/providers/settings_provider.dart';
 import 'package:speak4u/utils/routes.dart';
 import 'package:speak4u/utils/themes.dart';
 
+import 'Models/messages.dart';
 import 'Pages/custom.dart';
 
-class MyApp extends StatefulWidget {
-  final String appTheme;
-  final String langCode;
-  final String langCodeSp;
-  final pitch;
-  final vol;
-  final rate;
-
-  const MyApp({super.key, required this.appTheme, required this.langCode, required this.langCodeSp, required this.pitch, required this.vol, required this.rate});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late ThemeData theme;
-
-
-  @override
-  void initState() {
-    super.initState();
-    theme = _getThemeMode(widget.appTheme);
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final settings = context.watch<SettingsProvider>();
+
+    final theme = _getThemeMode(context, settings.theme);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme,
       initialRoute: "/",
       routes: {
-        "/": (context) => HomePage(langCode: widget.langCode, langCodeSp: widget.langCodeSp, rate: widget.rate, pitch: widget.pitch, vol: widget.vol),
-        MyRoutes.homeRoute: (context) => HomePage(langCode: widget.langCode, langCodeSp: widget.langCodeSp, rate: widget.rate, pitch: widget.pitch, vol: widget.vol),
-        MyRoutes.customRoute: (context) => CustomPage(langCode: widget.langCode, langCodeSp: widget.langCodeSp, rate: widget.rate, pitch: widget.pitch, vol: widget.vol),
-        MyRoutes.personRoute: (context) => PersonalizationPage(langCode: widget.langCode),
+        "/": (context) => HomePage(
+            langCode: settings.langCode,
+            langCodeSp: settings.langCodeSp,
+            rate: settings.rate,
+            pitch: settings.pitch,
+            vol: settings.vol,
+            fileName: settings.fileName
+        ),
+        MyRoutes.homeRoute: (context) => HomePage(
+            langCode: settings.langCode,
+            langCodeSp: settings.langCodeSp,
+            rate: settings.rate,
+            pitch: settings.pitch,
+            vol: settings.vol,
+            fileName: settings.fileName
+        ),
+        MyRoutes.customRoute: (context) => CustomPage(
+            langCode: settings.langCode,
+            langCodeSp: settings.langCodeSp,
+            rate: settings.rate,
+            pitch: settings.pitch,
+            vol: settings.vol,
+        messages: MessageModel.messages
+        ),
+        MyRoutes.personRoute: (context) => PersonalizationPage(langCode: settings.langCode),
       },
     );
   }
 
-  ThemeData _getThemeMode(String appTheme) {
+  ThemeData _getThemeMode(BuildContext context, String appTheme) {
     switch (appTheme) {
       case "Light":
         return MyTheme.lightTheme(context);
@@ -57,7 +65,7 @@ class _MyAppState extends State<MyApp> {
       case "Neon":
         return MyTheme.neonTheme(context);
       default:
-        return MyTheme.lightTheme(context); // fallback
+        return MyTheme.lightTheme(context);
     }
   }
 }
@@ -69,8 +77,23 @@ void main() async {
   final theme = prefs.getString("theme") ?? "Light";
   final lang = prefs.getString("langCode") ?? "en";
   final langSp = prefs.getString("langCodeSp") ?? "en-US";
-  final pitch = prefs.getDouble("pitch") ?? 1;
-  final rate = prefs.getDouble("rate") ?? 0.5;
+  final pitch = prefs.getDouble("pitch") ?? 0.7;
+  final rate = prefs.getDouble("rate") ?? 0.3;
   final vol = prefs.getDouble("vol") ?? 1;
-  runApp(MyApp(appTheme: theme, langCode: lang, langCodeSp: langSp, vol: vol, rate: rate, pitch: pitch));
+  final fileName = prefs.getString("fileName") ?? "assets/files/commands_eng.json";
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => SettingsProvider().load(
+        theme: theme,
+        langCode: lang,
+        langCodeSp: langSp,
+        pitch: pitch,
+        rate: rate,
+        vol: vol,
+        fileName: fileName,
+      ),
+      child: const Restart(child: MyApp()),
+    ),
+  );
 }

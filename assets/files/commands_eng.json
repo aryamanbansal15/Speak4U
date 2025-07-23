@@ -1,5 +1,5 @@
 {
-  "categories": [
+  "commands": [
     {
       "name": "Basic Needs",
       "icon": "assets/images/basic_need.jpg",
@@ -134,6 +134,27 @@
         "I need medicine",
         "I need help now"
       ]
+    }
+  ],
+  "messages": [
+    {
+      "tagline" : "YOU THINK, WE SPEAK",
+      "common" : "Commonly Used Commands",
+      "commonPhrases" : "Commonly Used Phrases",
+      "stop" : "STOP \uD83D\uDED1",
+      "speak" : "SPEAK \uD83D\uDCAC",
+      "personalization" : "Personalization",
+      "save" : "Save",
+      "reset" : "Reset",
+      "theme" : "Choose a theme",
+      "language" : "Choose a language",
+      "pitch" : "Choose a pitch",
+      "volume" : "Choose a volume",
+      "speed" : "Choose speed of speech",
+      "selected" : "Selected",
+      "command" : "Command",
+      "enterToSpeak" : "Enter what you want to say",
+      "custom" : "CUSTOM COMMANDS"
     }
   ]
 }

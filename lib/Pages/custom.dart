@@ -3,17 +3,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:speak4u/utils/invert.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../Models/messages.dart';
 import '../utils/routes.dart';
 import '../utils/speak.dart';
 import '../utils/translate.dart';
 
 class CustomPage extends StatefulWidget {
-  const CustomPage({super.key, required this.langCode, required this.langCodeSp, required this.vol, required this.rate, required this.pitch});
+  const CustomPage({super.key, required this.langCode, required this.langCodeSp, required this.vol, required this.rate, required this.pitch, required this.messages});
   final String langCode;
   final String langCodeSp;
   final vol;
   final rate;
   final pitch;
+  final List<Message> messages;
 
   @override
   State<CustomPage> createState() => _CustomPageState();
@@ -22,12 +24,6 @@ class CustomPage extends StatefulWidget {
 class _CustomPageState extends State<CustomPage> {
 
   String command = "";
-  String customCommands = "CUSTOM COMMANDS";
-  String hintText = "Enter what you want to speak";
-  String labelText = "Command";
-  String speak = "SPEAK";
-  String stop = "STOP";
-  String backToHome = "BACK TO HOME";
 
 
 
@@ -35,12 +31,6 @@ class _CustomPageState extends State<CustomPage> {
 
   void initState() {
     super.initState();
-    translate(customCommands, widget.langCode, (r)=> customCommands = r);
-    translate(hintText, widget.langCode, (r)=> hintText = r);
-    translate(labelText, widget.langCode, (r)=> labelText = r);
-    translate(speak, widget.langCode, (r)=> speak = r);
-    translate(stop, widget.langCode, (r)=> stop = r);
-    translate(backToHome, widget.langCode, (r)=> backToHome = r);
 
   }
 
@@ -53,11 +43,12 @@ class _CustomPageState extends State<CustomPage> {
 
   Widget build(BuildContext context) {
     final textColor = invertColor(Theme.of(context).cardColor);
+    final message = widget.messages[0];
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            customCommands.text.bold.center.xl5.color(textColor).fontFamily(GoogleFonts.luckiestGuy().fontFamily!).make().py32(),
+            message.custom.text.bold.center.xl5.color(textColor).fontFamily(GoogleFonts.luckiestGuy().fontFamily!).make().py32(),
             Container(
               color: Theme.of(context).cardColor,
               width: MediaQuery.of(context).size.width*3 / 4,
@@ -68,8 +59,8 @@ class _CustomPageState extends State<CustomPage> {
                     TextFormField(
                       style : TextStyle(color: textColor),
                       decoration: InputDecoration(
-                        hintText: hintText, hintStyle: TextStyle(color: textColor),
-                        labelText: labelText, labelStyle: TextStyle(color: textColor),
+                        hintText: message.enterToSpeak, hintStyle: TextStyle(color: textColor),
+                        labelText: message.command, labelStyle: TextStyle(color: textColor),
                       ),
                       onChanged: (value) {
                         command = value;
@@ -87,7 +78,7 @@ class _CustomPageState extends State<CustomPage> {
                           borderRadius: BorderRadius.circular(32), // Rounded corners
                         ),
                       ),
-                      child: "$speak 🔊".text.xl2.make(),
+                      child: "${message.speak} 🔊".text.xl2.make(),
                     ).w(200).h(60).centered(),
                     SizedBox.fromSize(size: Size(200, 50),),
                     ElevatedButton(
@@ -99,7 +90,7 @@ class _CustomPageState extends State<CustomPage> {
                           borderRadius: BorderRadius.circular(32), // Rounded corners
                         ),
                       ),
-                      child: "$stop 🛑".text.xl2.make(),
+                      child: "${message.stop}".text.xl2.make(),
                     ).w(200).h(60).centered().py(10),
                   ],
                 ),

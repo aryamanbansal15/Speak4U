@@ -3,11 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:speak4u/utils/invert.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../Models/messages.dart';
 import '../../utils/translate.dart';
 
 class StmtHeader extends StatefulWidget {
   final String langCode;
-  const StmtHeader({super.key, required this.langCode});
+  final List<Message> messages;
+  const StmtHeader({super.key, required this.langCode, required this.messages});
 
   @override
   State<StmtHeader> createState() => _StmtHeaderState();
@@ -15,28 +17,29 @@ class StmtHeader extends StatefulWidget {
 
 class _StmtHeaderState extends State<StmtHeader> {
 
-  String commonPhrases = "Commonly Used Phrases";
+  // String commonPhrases = "Commonly Used Phrases";
 
   @override
   void initState() {
     super.initState();
-    translate(commonPhrases, widget.langCode);
+    // translate(commonPhrases, widget.langCode);
   }
 
-  void translate(String text, String langCode) async {
-    String result = await Translate().translate(text, langCode);
-    setState(() {
-      commonPhrases = result; // ✅ Corrected
-    });
-  }
+  // void translate(String text, String langCode) async {
+  //   String result = await Translate().translate(text, langCode);
+  //   setState(() {
+  //     commonPhrases = result; // ✅ Corrected
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final message = widget.messages[0];
     final textColor = invertColor(Theme.of(context).cardColor);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        commonPhrases.text.xl5.center
+        message.commonPhrases.text.xl5.center
             .fontFamily(GoogleFonts.birthstone().fontFamily!)
             .color(textColor).make(),
       ],

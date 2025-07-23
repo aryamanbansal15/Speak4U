@@ -4,6 +4,7 @@ import 'package:speak4u/Pages/stmt.dart';
 import 'package:speak4u/utils/invert.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../Models/messages.dart';
 import '../../utils/translate.dart';
 
 
@@ -57,7 +58,7 @@ class _CommandListState extends State<CommandList> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => StmtPage(command: command, langCode: widget.langCode, langCodeSp: widget.langCodeSp, rate: widget.rate, pitch: widget.pitch, vol: widget.vol),
+                builder: (context) => StmtPage(command: command, langCode: widget.langCode, langCodeSp: widget.langCodeSp, rate: widget.rate, pitch: widget.pitch, vol: widget.vol, messages: MessageModel.messages),
               ),
             );
           },
