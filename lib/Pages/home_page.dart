@@ -99,7 +99,7 @@ class HomePageState extends State<HomePage> {
                   child: CommandList(langCode: widget.langCode, langCodeSp: widget.langCodeSp, rate: widget.rate, pitch: widget.pitch, vol: widget.vol).py16(),
                 )
               else
-                Center(child: Text("${widget.fileName}", style: TextStyle(color: textColor, fontSize: 20))),
+                Center(child: CircularProgressIndicator()),
               // ElevatedButton(
               //   onPressed: () {
               //     Navigator.pushNamed(context, MyRoutes.customRoute);

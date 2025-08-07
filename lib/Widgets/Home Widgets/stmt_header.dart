@@ -9,7 +9,8 @@ import '../../utils/translate.dart';
 class StmtHeader extends StatefulWidget {
   final String langCode;
   final List<Message> messages;
-  const StmtHeader({super.key, required this.langCode, required this.messages});
+  final String command;
+  const StmtHeader({super.key, required this.langCode, required this.messages,required this.command});
 
   @override
   State<StmtHeader> createState() => _StmtHeaderState();
@@ -28,7 +29,7 @@ class _StmtHeaderState extends State<StmtHeader> {
   // void translate(String text, String langCode) async {
   //   String result = await Translate().translate(text, langCode);
   //   setState(() {
-  //     commonPhrases = result; // ✅ Corrected
+  //     commonPhrases = result; //
   //   });
   // }
 
@@ -39,6 +40,10 @@ class _StmtHeaderState extends State<StmtHeader> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        widget.command.text.xl6.bold
+            .color(textColor)
+            .fontFamily(GoogleFonts.birthstone().fontFamily!)
+            .make(),
         message.commonPhrases.text.xl5.center
             .fontFamily(GoogleFonts.birthstone().fontFamily!)
             .color(textColor).make(),

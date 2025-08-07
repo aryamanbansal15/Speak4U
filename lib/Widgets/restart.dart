@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class Restart extends StatefulWidget {
   final Widget child;
+  static String? postRestartRoute;
 
   const Restart({Key? key, required this.child}) : super(key: key);
 
-  static void restartApp(BuildContext context) {
+  static void restartApp(BuildContext context, {String? postRestartRoute}) {
+    Restart.postRestartRoute = postRestartRoute;
     context.findAncestorStateOfType<_RestartState>()?.restartApp();
   }
 
@@ -19,6 +21,22 @@ class _RestartState extends State<Restart> {
   void restartApp() {
     setState(() {
       key = UniqueKey(); // Force rebuild
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant Restart oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (Restart.postRestartRoute != null) {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          Restart.postRestartRoute!,
+              (route) => false,
+        );
+        // Reset the static value to avoid repeated redirects
+        Restart.postRestartRoute = null;
+      }
     });
   }
 

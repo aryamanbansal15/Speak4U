@@ -57,7 +57,7 @@ class _StmtPageState extends State<StmtPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    StmtHeader(langCode: widget.langCode, messages: MessageModel.messages).py16(),
+                    StmtHeader(langCode: widget.langCode, messages: MessageModel.messages, command: widget.command.name,).py16(),
                     if(widget.command.phrases.isNotEmpty)
                       Expanded(
     child: StmtList(phrases: widget.command.phrases, langCode: widget.langCode, langCodeSp: widget.langCodeSp, rate: widget.rate, pitch: widget.pitch, vol: widget.vol).py16(),
