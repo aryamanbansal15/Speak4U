@@ -1,16 +1,1 @@
-# speak4u
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+SPEAK4U is a communication assistance app designed for people with speaking disabilities, enabling them to express themselves with ease. The app comes with a set of built-in commands for quick communication, along with an option to add custom commands for personalized needs. Users can customize the language of speech, rate, pitch, and volume to suit their comfort and context. Whether for daily conversations, accessibility, or translation, SPEAK4U makes communication simpler, faster, and more inclusive.
